@@ -1,75 +1,93 @@
-# React + TypeScript + Vite
+# VIN Decoder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A single-page React application for decoding vehicle VIN numbers using the official NHTSA API.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+### Home Page
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Decode 17-character VIN numbers
+- Client-side VIN validation
+- Display decoded vehicle information
+- Display API status messages
+- Loading state during API requests
+- History of the last three decoded VINs
+- Reuse previously decoded VINs with one click
 
-## Expanding the ESLint configuration
+### Vehicle Variables
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Browse all available vehicle variables provided by the NHTSA API
+- View detailed information for each variable
+- Responsive card layout
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Variable Details
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Display complete information about a selected vehicle variable
+- Show variable ID, group, data type, and description
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
+## Technologies
+
+- React
+- TypeScript
+- React Router
+- Axios
+- CSS Modules
+
+---
+
+## API
+
+This project uses the official NHTSA Vehicle Product Information Catalog (vPIC) API.
+
+https://vpic.nhtsa.dot.gov/api/
+
+---
+
+## Responsive Design
+
+The application is responsive and works correctly on screen sizes from **420px** to **1440px**.
+
+---
+
+## Local Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/aleksandraostrovskaya/vin-decoder.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Open the project
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+cd vin-decoder
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Install dependencies
 
+```bash
+npm install
+```
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+### 5. Open in browser
+
+```
+http://localhost:5173
+```
+
+---
+
+## Build for Production
+
+```bash
+npm run build
 ```
